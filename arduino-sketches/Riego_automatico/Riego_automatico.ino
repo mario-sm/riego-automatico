@@ -14,8 +14,6 @@
 #define HUMIDITY_SENSOR_4 A4
 #define HUMIDITY_SENSOR_5 A5
 
-const int hSensor1 = A0;
-const int lightSensor= A1;
 const float hMax =300;
 const float hMin = 1023;
 const float lMax = 1000;
@@ -46,7 +44,7 @@ void setup() {
   rest.variable("ambient_light",&ambient_light);
   rest.variable("plant_humidity_1",&plant_humidity_1);
 
-  rest.function("read",readData); 
+  rest.function("data",readData); 
 
   rest.set_id("1");
   rest.set_name("serial");
@@ -54,7 +52,7 @@ void setup() {
 }
  
 void loop() {
-  
+
   rest.handle(Serial);
 }
 
