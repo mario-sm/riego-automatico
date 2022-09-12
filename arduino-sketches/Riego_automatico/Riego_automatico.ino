@@ -27,18 +27,14 @@ float ambient_humidity = 0;
 float ambient_temperature = 0;
 float ambient_light = 0;
 float plant_humidity_1 = 0;
+
 int readData(String command);
+
 void setup() {
   // Inicializamos comunicación serie
   Serial.begin(115200);
   // Comenzamos el sensor DHT
   dht.begin();
-  lcd.begin(16, 2);
-  // Escribimos el Mensaje en el LCD.
-  lcd.print("AutoRiego 0.2");
-  lcd.setCursor(0, 1);
-  lcd.print("By Mario Suarez");
-
   rest.variable("ambient_temperature",&ambient_temperature);
   rest.variable("ambient_humidity",&ambient_humidity);
   rest.variable("ambient_light",&ambient_light);
@@ -66,7 +62,7 @@ int readData(String command){
   ambient_temperature = dht.readTemperature();
   plant_humidity_1 = CalculatePercentOfAnalogValueNotNormalized(hMax,hMin, humidity);
   ambient_light = CalculatePercentOfAnalogValueNormalized(lMax,lMin, light);
-  PrintOnLCD(ambient_temperature, ambient_humidity, ambient_light,plant_humidity_1);
+  //PrintOnLCD(ambient_temperature, ambient_humidity, ambient_light,plant_humidity_1);
   return 1;
 }
 
@@ -80,8 +76,16 @@ float CalculatePercentOfAnalogValueNormalized(float max, float min, int value){
   return percent;
 }
 
+void initLCD(){
+  lcd.begin(16, 2);
+  // Escribimos el Mensaje en el LCD.
+  lcd.print("AutoRiego 0.2");
+  lcd.setCursor(0, 1);
+  lcd.print("By Mario Suarez");
+
+}
 void PrintOnLCD(float ambient_temperature, float ambient_humidity, float ambient_light, float plant_humidity_1){
-   lcd.print("T:");
+  lcd.print("T:");
   lcd.print(ambient_temperature);
   lcd.print("|H: ");
   lcd.print(ambient_humidity);
