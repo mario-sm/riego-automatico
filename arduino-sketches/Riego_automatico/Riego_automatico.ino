@@ -1,3 +1,13 @@
+/* Proyecto de riego automatico con arduino. De momento, contamos con:
+DH11 -> Temperatura y humedad ambiente
+led fotosensor -> Iluminación
+Sensores analogicos de humedad : De momento uno , pero habilitados 5 .
+LCD -> Esperando a cambio con I2C.   
+
+TO-DO: Añadir dos relés , uno para la alimentación por i2c del LCD, y otro para los sensores, para solo tenerlos con tension a la hora de medir 
+
+
+*/
 #include <DHT.h>
 #include <LiquidCrystal.h>
 #include <aREST.h>

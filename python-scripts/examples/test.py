@@ -1,3 +1,4 @@
+#Ejemplo de comunicación con puerto serie. La idea seria generar un proyecto de flask, un sqlite , algun ORM  y que consultase los datos del arduino cada hora.
 #!/usr/bin/env python
 
 
